@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View , TouchableOpacity , ImageBackground} from 'react-native';
+import {StyleSheet, Text, View , TouchableOpacity , ImageBackground , SectionList} from 'react-native';
 import React from 'react';
 
 const Img_headline = ({item}) => {
