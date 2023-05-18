@@ -10,134 +10,22 @@ import Icon from 'react-native-vector-icons/AntDesign';
 import {FlatList} from 'react-native';
 import Img_headline from './Img_headline';
 import {useState} from 'react';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
+import {useContext} from 'react';
+import {Appcontext} from '../../Context';
 
 const MidSections = ({setval}) => {
-  const data = [
-    {
-      img: 'https://www.livemint.com/lm-img/img/2023/05/13/600x338/Adityanath_1683482398452_1683944810309.jpg',
-      author: 'Karishma Pranav Bhavsar',
-      headline:
-        'UP municipal election results 2023: Civic body poll, bye-election results today; BJP leads the race',
-      text: 'Uttar Pradesh Chief Minister Yogi Adityanath addresses during a public meeting for the UP Municipal elections, in Aligarh, Sunday, May 7, 2023. (PTI Photo)',
-    },
-    {
-      img: 'https://www.livemint.com/lm-img/img/2023/05/07/600x338/examination_1683469790387_1683469790555.jpg',
-      author: 'Livemint',
-      headline:
-        ' Karnataka SSLC Result 2023 releasing on 8 May. Direct link, time, process here',
-      text: 'Candidates who wrote the examination in 2023 can check the official website at sslc.karnataka.gov.in.',
-    },
-    {
-      img: 'https://www.livemint.com/lm-img/img/2023/05/13/600x338/VVPATs-Karnataka_1683936949968_1683936951193.jpg',
-      author: 'livmint',
-      headline:
-        "Karnataka election result 2023: Here's how to check election results in your constituencies",
-      text: 'Karnataka recorded a 73.19% of voter turnout--the highest-ever voter turnout in the southern state ever (HT_PRINT)',
-    },
-
-    {
-      img: 'https://www.livemint.com/lm-img/img/2023/05/13/600x338/Adityanath_1683482398452_1683944810309.jpg',
-      author: 'Karishma Pranav Bhavsar',
-      headline:
-        'UP municipal election results 2023: Civic body poll, bye-election results today; BJP leads the race',
-      text: 'Uttar Pradesh Chief Minister Yogi Adityanath addresses during a public meeting for the UP Municipal elections, in Aligarh, Sunday, May 7, 2023. (PTI Photo)',
-    },
-    {
-      img: 'https://www.livemint.com/lm-img/img/2023/05/07/600x338/examination_1683469790387_1683469790555.jpg',
-      author: 'Livemint',
-      headline:
-        ' Karnataka SSLC Result 2023 releasing on 8 May. Direct link, time, process here',
-      text: 'Candidates who wrote the examination in 2023 can check the official website at sslc.karnataka.gov.in.',
-    },
-    {
-      img: 'https://www.livemint.com/lm-img/img/2023/05/13/600x338/VVPATs-Karnataka_1683936949968_1683936951193.jpg',
-      author: 'livmint',
-      headline:
-        "Karnataka election result 2023: Here's how to check election results in your constituencies",
-      text: 'Karnataka recorded a 73.19% of voter turnout--the highest-ever voter turnout in the southern state ever (HT_PRINT)',
-    },
-    {
-      img: 'https://www.livemint.com/lm-img/img/2023/05/13/600x338/VVPATs-Karnataka_1683936949968_1683936951193.jpg',
-      author: 'livmint',
-      headline:
-        "Karnataka election result 2023: Here's how to check election results in your constituencies",
-      text: 'Karnataka recorded a 73.19% of voter turnout--the highest-ever voter turnout in the southern state ever (HT_PRINT)',
-    },
-    {
-      img: 'https://www.livemint.com/lm-img/img/2023/05/13/600x338/VVPATs-Karnataka_1683936949968_1683936951193.jpg',
-      author: 'livmint',
-      headline:
-        "Karnataka election result 2023: Here's how to check election results in your constituencies",
-      text: 'Karnataka recorded a 73.19% of voter turnout--the highest-ever voter turnout in the southern state ever (HT_PRINT)',
-    },
-    {
-      img: 'https://www.livemint.com/lm-img/img/2023/05/13/600x338/VVPATs-Karnataka_1683936949968_1683936951193.jpg',
-      author: 'livmint',
-      headline:
-        "Karnataka election result 2023: Here's how to check election results in your constituencies",
-      text: 'Karnataka recorded a 73.19% of voter turnout--the highest-ever voter turnout in the southern state ever (HT_PRINT)',
-    },
-    {
-      img: 'https://www.livemint.com/lm-img/img/2023/05/13/600x338/VVPATs-Karnataka_1683936949968_1683936951193.jpg',
-      author: 'livmint',
-      headline:
-        "Karnataka election result 2023: Here's how to check election results in your constituencies",
-      text: 'Karnataka recorded a 73.19% of voter turnout--the highest-ever voter turnout in the southern state ever (HT_PRINT)',
-    },
-    {
-      img: 'https://www.livemint.com/lm-img/img/2023/05/13/600x338/Adityanath_1683482398452_1683944810309.jpg',
-      author: 'Karishma Pranav Bhavsar',
-      headline:
-        'UP municipal election results 2023: Civic body poll, bye-election results today; BJP leads the race',
-      text: 'Uttar Pradesh Chief Minister Yogi Adityanath addresses during a public meeting for the UP Municipal elections, in Aligarh, Sunday, May 7, 2023. (PTI Photo)',
-    },
-    {
-      img: 'https://www.livemint.com/lm-img/img/2023/05/07/600x338/examination_1683469790387_1683469790555.jpg',
-      author: 'Livemint',
-      headline:
-        ' Karnataka SSLC Result 2023 releasing on 8 May. Direct link, time, process here',
-      text: 'Candidates who wrote the examination in 2023 can check the official website at sslc.karnataka.gov.in.',
-    },
-    {
-      img: 'https://www.livemint.com/lm-img/img/2023/05/13/600x338/VVPATs-Karnataka_1683936949968_1683936951193.jpg',
-      author: 'livmint',
-      headline:
-        "Karnataka election result 2023: Here's how to check election results in your constituencies",
-      text: 'Karnataka recorded a 73.19% of voter turnout--the highest-ever voter turnout in the southern state ever (HT_PRINT)',
-    },
-    {
-      img: 'https://www.livemint.com/lm-img/img/2023/05/13/600x338/Adityanath_1683482398452_1683944810309.jpg',
-      author: 'Karishma Pranav Bhavsar',
-      headline:
-        'UP municipal election results 2023: Civic body poll, bye-election results today; BJP leads the race',
-      text: 'Uttar Pradesh Chief Minister Yogi Adityanath addresses during a public meeting for the UP Municipal elections, in Aligarh, Sunday, May 7, 2023. (PTI Photo)',
-    },
-    {
-      img: 'https://www.livemint.com/lm-img/img/2023/05/07/600x338/examination_1683469790387_1683469790555.jpg',
-      author: 'Livemint',
-      headline:
-        ' Karnataka SSLC Result 2023 releasing on 8 May. Direct link, time, process here',
-      text: 'Candidates who wrote the examination in 2023 can check the official website at sslc.karnataka.gov.in.',
-    },
-    {
-      img: 'https://www.livemint.com/lm-img/img/2023/05/13/600x338/VVPATs-Karnataka_1683936949968_1683936951193.jpg',
-      author: 'livmint',
-      headline:
-        "Karnataka election result 2023: Here's how to check election results in your constituencies",
-      text: 'Karnataka recorded a 73.19% of voter turnout--the highest-ever voter turnout in the southern state ever (HT_PRINT)',
-    },
-    
-  ];
-
   const choice = [
-    'Healthy',
-    'Technology',
-    'Finance',
-    'Arts',
-    'Science',
-    'Politics',
+    'business',
+    'entertainment',
+    'general',
+    'health',
+    'science',
+    'sports',
+    'technology',
   ];
+
+  const {setsearch, markindex, setmarkindex, hotnew} = useContext(Appcontext);
 
   const [categoryindex, setcategoryindex] = useState(-1);
   const navigation = useNavigation();
@@ -161,10 +49,9 @@ const MidSections = ({setval}) => {
           Latest News
         </Text>
         <TouchableOpacity
-        onPress={()=>{
-          navigation.navigate('seeall')
-
-        }}
+          onPress={() => {
+            navigation.navigate('seeall');
+          }}
           style={{
             flexDirection: 'row',
             alignItems: 'center',
@@ -193,7 +80,7 @@ const MidSections = ({setval}) => {
       {/* image background */}
       <View>
         <FlatList
-          data={data}
+          data={hotnew}
           horizontal
           showsHorizontalScrollIndicator={false}
           renderItem={({item}) => <Img_headline item={item}></Img_headline>}
@@ -216,12 +103,13 @@ const MidSections = ({setval}) => {
               gap: 8,
             }}
             renderItem={({item, index}) => {
-              const iselected = categoryindex === index;
+              const iselected = markindex === index;
               return (
                 <TouchableOpacity
-                  onPress={() =>{
-                    setcategoryindex(index)
-                    setval(item)
+                  onPress={() => {
+                    setmarkindex(index);
+                    setval(item);
+                    setsearch(item);
                   }}
                   style={{
                     display: 'flex',

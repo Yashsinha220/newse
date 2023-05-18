@@ -17,7 +17,7 @@ const Img_headline = ({item}) => {
         }}>
         <ImageBackground
           source={{
-            uri: item.img,
+            uri: item.urlToImage,
           }}
           resizeMode="cover"
           style={{
@@ -54,7 +54,7 @@ const Img_headline = ({item}) => {
                   fontStyle: 'normal',
                   lineHeight: 21,
                 }}>
-                {item.headline}
+                {item.title.slice(0 , 100)} show more ...
               </Text>
             </View>
 
@@ -66,7 +66,7 @@ const Img_headline = ({item}) => {
                   color: '#ffffff',
                   lineHeight: 14,
                 }}>
-                {item.text}
+                {item.description.slice(0 , 150) } show more ....
               </Text>
             </View>
           </View>
